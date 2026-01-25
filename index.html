@@ -4,19 +4,104 @@
   <meta charset="UTF-8">
   <title>My Site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       background: #0f0f0f;
       color: #eaeaea;
       font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* TAB BAR */
+    .tab-buttons {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      gap: 12px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 20px;
+    }
+
+    .tab-buttons button {
+      background: none;
+      border: none;
+      color: #aaa;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .tab-buttons button.active {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    /* TAB CONTENT */
+    .tab {
+      display: none;
+      max-width: 900px;
+    }
+
+    .tab img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
-  <h1>It works 🚀</h1>
+
+  <!-- TAB BUTTONS -->
+  <div class="tab-buttons">
+    <button onclick="openTab(0)">Home</button>
+    <button onclick="openTab(1)">About</button>
+    <button onclick="openTab(2)">Projects</button>
+    <button onclick="openTab(3)">Gallery</button>
+    <button onclick="openTab(4)">Contact</button>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <div class="tab">
+    <h1>It works 🚀</h1>
+    <p>Welcome to my website.</p>
+  </div>
+
+  <div class="tab">
+    <h1>About</h1>
+    <p>This is where you write about yourself.</p>
+  </div>
+
+  <div class="tab">
+    <h1>Projects</h1>
+    <p>Stuff you’re working on.</p>
+  </div>
+
+  <div class="tab">
+    <h1>Gallery</h1>
+    <p>Your images go here.</p>
+    <!-- Example image -->
+    <!-- <img src="images/pic1.jpg"> -->
+  </div>
+
+  <div class="tab">
+    <h1>Contact</h1>
+    <p>Email: you@example.com</p>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const buttons = document.querySelectorAll(".tab-buttons button");
+
+    function openTab(index) {
+      tabs.forEach(tab => tab.style.display = "none");
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      tabs[index].style.display = "block";
+      buttons[index].classList.add("active");
+    }
+
+    openTab(0); // default tab (Home)
+  </script>
+
 </body>
 </html>
